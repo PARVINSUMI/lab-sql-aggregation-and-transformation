@@ -8,6 +8,13 @@ SELECT
     MAX(length) AS max_duration
 FROM film;
 
+
+SELECT 
+    FLOOR(AVG(length) / 60) AS avg_hours,
+    MOD(FLOOR(AVG(length)), 60) AS avg_minutes
+FROM film;
+
+
 SELECT
     FLOOR(AVG(length)) AS avg_minutes,
     FLOOR(AVG(length) / 60) AS avg_hours,
