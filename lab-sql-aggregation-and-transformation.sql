@@ -8,9 +8,18 @@ SELECT
     MAX(length) AS max_duration
 FROM film;
 
+SELECT
+    FLOOR(AVG(length)) AS avg_minutes,
+    FLOOR(AVG(length) / 60) AS avg_hours,
+    MOD(FLOOR(AVG(length)), 60) AS remaining_minutes
+FROM film;
+
+
+
 SELECT 
     DATEDIFF(MAX(rental_date), MIN(rental_date)) AS days_operating
 FROM rental;
+
 
 SELECT 
     rental_id,
@@ -72,6 +81,16 @@ SELECT
 FROM film
 GROUP BY rating
 ORDER BY avg_duration DESC;
+
+SELECT 
+    rating,
+    ROUND(AVG(length), 2) AS avg_duration
+FROM film
+GROUP BY rating
+HAVING AVG(length) > 120
+ORDER BY avg_duration DESC;
+
+
 
 SELECT last_name
 FROM actor
